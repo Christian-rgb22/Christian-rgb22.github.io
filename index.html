@@ -1,79 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Content Forge</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-   <center> <img src="channels4_banner.jpg" src="gradient.png" alt="gradient"></center>
-    <div class="layer-blur"></div>
-    <div class="container">
-        <header>
-            <h1 data-aos="fade-down" data-aos-duration="1500" class="logo"> THE CONTENT FORGE</h1>
-            <nav>
-                <a data-aos="fade-down" data-aos-duration="1500" href="#">About</a>
-                <a data-aos="fade-down" data-aos-duration="2000" href="#">Creative Content</a>
-                <a data-aos="fade-down" data-aos-duration="2500" href="#">Artwork</a>
-                <a data-aos="fade-down" data-aos-duration="3000" href="#">Contact</a>
-            </nav>
-            
-        </header>
+  <center><img src="channels4_banner.jpg" alt="gradient banner"></center>
 
-        <main>
-            <div class="content">
-                <div data-aos="fade-zoom-in"
-                data-aos-easing="ease-in-back"
-                data-aos-delay="300"
-                data-aos-offset="0" data-aos-duration="1500" class="tag-box">
-                    <div class="tag"> <link rel="stylesheet" href="https://youtube.com/@dragaleoreforged3999?si=q2ypVb4G9snAW_9a">Youtube channel Here</div>
-                </div>
+  <div class="layer-blur"></div>
 
-                <h1 data-aos="fade-zoom-in"
-                data-aos-easing="ease-in-back"
-                data-aos-delay="300"
-                data-aos-offset="0" data-aos-duration="2000" >Where Entertainment meets<br>Creativity</h1>
+  <div class="container">
+    <header>
+      <h1 class="logo">THE CONTENT FORGE</h1>
 
-                <p d data-aos="fade-zoom-in"
-                data-aos-easing="ease-in-back"
-                data-aos-delay="300"
-                data-aos-offset="0" data-aos-duration="2500"  class="description">
-                   Portfolio of creative works including digital art, writing, and multimedia projects such as youtube content, showcasing a blend of imagination and technical skills, Aiming to entertain teens and you adults of all ages
-                </p>
-                   
-                </p>
+      <nav>
+        <a href="#">About</a>
+        <a href="#">Creative Content</a>
+        <a href="#">Artwork</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
 
-                <div data-aos="fade-zoom-in"
-                data-aos-easing="ease-in-back"
-                data-aos-delay="300"
-                data-aos-offset="0" data-aos-duration="3000"  class="buttons">
-                    <a href="#" class="btn-signing-main">Streaming Times &gt;</a>
-                </div>
-            </div>
-        </main>
-  <section class="media-scroller" aria-label="Media scroller">
-            <div class="scroll-container" data-aos="fade-up" data-aos-duration="1000">
-                
-                <img src="thumbnail1.png" alt="Valorant Thumbnail">
-                <img src="thumbnail2.png" alt="Video rebrand Thumbnail ">
-                <img src="Thumbnail3.png" alt="video Thumbnail">
-                <img src="" alt="Media 4">
-                <img src="" alt="Media 5">
-                <img src="" alt="Media 6">
-                <img src="" alt="Media 7">
-                <img src="" alt="Media 8">
-            </div>
-        </section>
-        
-    </div>
+    <main>
+      <div class="content">
+        <div class="tag-box">
+          <div class="tag">
+            <a href="https://youtube.com/@dragaleoreforged3999?si=q2ypVb4G9snAW_9a" target="_blank" rel="noreferrer">YouTube channel Here</a>
+          </div>
+        </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+        <h1>Where Entertainment meets<br>Creativity</h1>
+
+        <p class="description">
+          Portfolio of creative works including digital art, writing, and multimedia projects such as YouTube content, showcasing a blend of imagination and technical skills — aiming to entertain teens and adults of all ages.
+        </p>
+
+        <div class="buttons">
+          <a href="#" class="btn-signing-main">Streaming Times &gt;</a>
+        </div>
+      </div>
+
+      
+      <section class="media-scroller" aria-label="Media scroller">
+        <div class="scroll-container">
+          <img src="thumbnail1.png" alt="Thumbnail 1" loading="lazy">
+          <img src="thumbnail2.png" alt="Thumbnail 2" loading="lazy">
+          <img src="thumbnail3.png" alt="Thumbnail 3" loading="lazy">
+         
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
     
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('img').forEach(function (img) {
+        var src = img.getAttribute('src');
+        if (!src || src.trim() === '') {
+          img.remove();
+        }
+      });
+
+      
+      document.querySelectorAll('a[href="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) { e.preventDefault(); });
+      });
+    });
+  </script>
 </body>
 </html>
-
