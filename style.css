@@ -274,195 +274,99 @@ main{
 
 }
 
-
-@media (max-width: 480px)
-{ header h1{
-        font-size: 1.5rem;
-    }
-
-    .btn-signing{
-        padding: 0.4rem 1rem;
-    }
-
-    .robot-3d{
-        top: -28%;
-        right: 0;
-    }
-
-
-    .content{
-        max-width: 32rem;
-        margin-left: 10%;
-        margin-top: 15rem;
-    }
-
-    .tag-box{
-        width: 15rem;
-        height: 2rem;
-    }
-    
-    .content h1{
-        font-size: 2rem;
-        margin: 1rem 0;
-    }
-
-    .btn-get-started{
-        font-size: 0.6rem;
-        padding: 0.5rem 1.5rem;
-    }
-
-    .btn-signing-main{
-        font-size: 0.6rem;
-        padding: 0.5rem 1.5rem;
-    }
-    :root {
-  --scroller-width: 340px;
-  --scroller-gap: 12px;
-  --scroller-bg: rgba(255,255,255,0.92);
-  --scroller-accent: #111827;
+.container{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: bottom;
+  overflow: visible; 
 }
 
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  margin: 0;
-  background: #fafafa;
-  color: #111;
-}
-
-/* --- Container / header minimal styles to match your HTML --- */
-.container {
-  max-width: 1100px;
-  margin: 24px auto;
-  padding: 16px;
+/* MEDIA SCROLLER */
+.media-scroller {
+  margin-top: 2.5rem;
+  padding: 1rem 0;
+  width: 100%;
+  z-index: 10; /* ensure it sits above darker background if needed */
   position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
 }
 
-.media-side {
-  position: fixed;
-  right: 20px;
-  top: 110px;             
-  width: 360px;
-  height: 340px;
-  background: var(--panel-bg);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(12,15,20,0.12);
-  padding: 12px;
+
+.scroll-container {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 999;
-  transition: transform .22s ease;
-  backdrop-filter: blur(4px);
-  overflow: visible;
-}
-
-/* collapse to a narrower pill on small screens */
-@media (max-width: 900px) {
-  .media-side { position: static; width: calc(100% - 40px); margin: 18px auto; height: auto; }
-}
-
-/* header row with controls */
-.media-side__header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 8px;
-}
-.media-side__title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-}
-.media-side__controls {
-  display:flex;
-  gap:6px;
-  align-items:center;
-}
-
-/* control buttons */
-.ms-btn {
-  height:34px;
-  min-width:34px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  border: 1px solid rgba(12,15,20,0.06);
-  background: #fff;
-  cursor: pointer;
-  font-size:14px;
-  padding:0 8px;
-  box-shadow: 0 4px 10px rgba(12,15,20,0.06);
-}
-.ms-btn:focus { outline: 3px solid rgba(59,130,246,0.18); }
-
-/* track: horizontally scrollable row */
-.media-track {
-  display:flex;
-  gap: 10px;
+  gap: 1rem;
   overflow-x: auto;
+  padding: 0.5rem 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
-  align-items: start;
-  scroll-behavior: smooth;
+  align-items: center;
+ min-height: 88px;
 }
 
-/* thumb/item */
-.media-item {
-  flex: 0 0 270px;         /* width of each visible item */
-  scroll-snap-align: center;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 6px 16px rgba(12,15,20,0.06);
-  display:flex;
-  flex-direction: column;
-  min-width: 200px;
+
+
+
+.scroll-container img {
+    --thumb-w: 80px; 
+    --thumb-h: 80px;  
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    border: 1px solid rgb(255, 9, 161);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    cursor: pointer;
 }
 
-/* image fills box and maintains aspect ratio */
-.media-thumb {
-  width: 100%;
-  height: 160px;
-  display: block;
-  object-fit: cover;
-  background: #e9e9ef;
+.scroll-container img:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.7);
 }
 
-/* caption area */
-.media-caption {
-  padding: 8px;
-  font-size: 13px;
-  color: #222;
-  background: transparent;
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+}
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-/* make the scrollbar smaller and less obtrusive */
-.media-track::-webkit-scrollbar { height: 9px; }
-.media-track::-webkit-scrollbar-thumb {
-  background: rgba(12,15,20,0.12);
-  border-radius: 8px;
-}
-.media-track::-webkit-scrollbar-track { background: transparent; }
 
-/* show subtle left/right gradient edges when content overflows */
-.media-side::before,
-.media-side::after {
-  content: "";
-  position: absolute;
-  top: 110px; /* aligns with track — tweak if needed */
-  bottom: calc(100% - (110px + 200px));
-  pointer-events: none;
+.scroll-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.06) transparent;
 }
 
-/* optional visual polish for focus/hover */
-.media-item:focus-within,
-.media-item:hover { transform: translateY(-4px); transition: transform .18s ease; }
 
-/* small screens: adjust item sizes */
-@media (max-width: 480px) {
-  .media-item { flex: 0 0 220px; }
-  .media-thumb { height: 130px; }
+@media (max-width: 1024px) {
+    .scroll-container img {
+        --thumb-w: 120px;
+        --thumb-h: 72px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-container img {
+        --thumb-w: 92px;
+        --thumb-h: 58px;
+        border-radius: 6px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .scroll-container {
+        padding: 0.5rem 1rem;
+    }
+    
 }
