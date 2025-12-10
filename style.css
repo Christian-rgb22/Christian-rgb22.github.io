@@ -1,11 +1,11 @@
-/* Basic reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body / theme */
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #000;
@@ -14,7 +14,7 @@ body {
   line-height: 1.5;
 }
 
-/* Layer blur / decorative */
+
 .layer-blur {
   height: 0;
   width: 30rem;
@@ -26,16 +26,16 @@ body {
   z-index: -1;
 }
 
-/* Container (fixed) */
+
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
-  overflow: visible; /* allow horizontal scroller & scrollbar visibility */
+  overflow: visible; 
 }
 
-/* Header */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -76,7 +76,7 @@ nav a:hover { color: #a7a7a7; }
 
 .btn-signing-main:hover { background: gray; }
 
-/* Main content */
+
 main {
   display: flex;
   flex-direction: column;
@@ -90,7 +90,7 @@ main {
   z-index: 1;
 }
 
-/* Tag box */
+
 .tag-box {
   position: relative;
   width: 18rem;
@@ -122,7 +122,7 @@ main {
   text-decoration: none;
 }
 
-/* Headline / description */
+
 .content h1 {
   font-size: 4rem;
   font-weight: 600;
@@ -139,13 +139,13 @@ main {
   margin-bottom: 1rem;
 }
 
-/* Media scroller */
+
 .media-scroller {
   margin-top: 2.5rem;
   padding: 1rem 0;
   width: 100%;
   position: relative;
-  min-height: 96px; /* keeps the scroller visible */
+  min-height: 96px; 
   background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
   z-index: 2;
 }
@@ -161,7 +161,7 @@ main {
   min-height: 88px;
 }
 
-/* Thumbnails */
+
 .scroll-container img {
   --thumb-w: 80px;
   --thumb-h: 80px;
@@ -183,14 +183,14 @@ main {
 }
 
 .panel {
-  /* panels are block-level sections that can be shown/hidden */
+  /* panels that can be shown/hidden */
   transition: opacity 260ms ease, transform 260ms ease, visibility 260ms;
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
 }
 
-/* Hidden state: removed from layout and non-interactive */
+/* This controls section hidden state */
 .panel.hidden {
   opacity: 0;
   transform: translateY(8px);
@@ -198,7 +198,7 @@ main {
   pointer-events: none;
 }
 
-/* Visible class used for transitions when changing panels - ensures animation */
+/* this is used used for transitions when changing panels - ensures animation */
 .panel.visible {
   opacity: 1;
   transform: translateY(0);
@@ -206,7 +206,7 @@ main {
   pointer-events: auto;
 }
 
-/* Give the about panel some inner padding / style */
+
 #about-panel .about-inner {
   background: rgba(10,10,10,0.6);
   padding: 1.25rem;
@@ -216,7 +216,7 @@ main {
   color: #fff;
 }
 
-/* Close button */
+
 .close-btn {
   background: #111;
   color: #fff;
@@ -227,7 +227,58 @@ main {
   float: right;
 }
 
-/* Ensure tab-focusable region for panels (we set tabindex=-1 in HTML) */
+
 .panel[tabindex="-1"] {
   outline: none;
+}
+.tab-section {
+  display: none;          
+  padding: 1.2rem 0;
+  transition: opacity .28s ease, transform .28s ease;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+
+.tab-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+nav a.nav-link {
+  padding: 0.25rem 0.25rem;
+  border-radius: 6px;
+}
+
+nav a.nav-link.active {
+  background: rgba(255,255,255,0.03);
+  color: #06d9f5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.art-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+
+.media-scroller { margin-top: 1rem; }
+
+/* small responsive fix: keep nav usable on small screens */
+@media (max-width: 768px) {
+  header { flex-direction: column; gap: .8rem; align-items: flex-start; padding: 1rem; }
+  nav { gap: 1rem; }
 }

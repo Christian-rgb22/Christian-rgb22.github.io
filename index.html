@@ -15,59 +15,112 @@
     <header>
       <h1 class="logo">THE CONTENT FORGE</h1>
 
-      <nav>
-        <a href="#">About</a>
-        <a href="#">Creative Content</a>
-        <a href="#">Artwork</a>
-        <a href="#">Contact</a>
+     
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#home" data-target="home" class="nav-link">About</a>
+        <a href="#creative" data-target="creative" class="nav-link">Creative Content</a>
+        <a href="#artwork" data-target="artwork" class="nav-link">Artwork</a>
+        <a href="#contact" data-target="contact" class="nav-link">Contact</a>
       </nav>
     </header>
 
     <main>
-      <div class="content">
-        <div class="tag-box">
-          <div class="tag">
-            <a href="https://youtube.com/@dragaleoreforged3999?si=q2ypVb4G9snAW_9a" target="_blank" rel="noreferrer">YouTube channel Here</a>
+      <section id="home" class="tab-section" role="region" aria-labelledby="tab-home">
+        <div class="content">
+          <div class="tag-box">
+            <div class="tag">
+              <a href="https://youtube.com/@dragaleoreforged3999?si=q2ypVb4G9snAW_9a" target="_blank" rel="noreferrer">YouTube channel Here</a>
+            </div>
+          </div>
+
+          <h1 id="tab-home">Where Entertainment meets<br>Creativity</h1>
+
+          <p class="description">
+            Portfolio of creative works including digital art, writing, and multimedia projects such as YouTube content, showcasing a blend of imagination and technical skills — aiming to entertain teens and adults of all ages.
+          </p>
+
+          <div class="buttons">
+            <a href="#" class="btn-signing-main">Streaming Times &gt;</a>
           </div>
         </div>
+      </section>
 
-        <h1>Where Entertainment meets<br>Creativity</h1>
+      <section id="creative" class="tab-section" role="region" aria-labelledby="tab-creative">
+        <h2 id="tab-creative">Creative Content</h2>
+        <p class="description">Here are videos, montages and media examples.</p>
 
-        <p class="description">
-          Portfolio of creative works including digital art, writing, and multimedia projects such as YouTube content, showcasing a blend of imagination and technical skills — aiming to entertain teens and adults of all ages.
-        </p>
-
-        <div class="buttons">
-          <a href="#" class="btn-signing-main">Streaming Times &gt;</a>
+       
+        <div class="media-scroller">
+          <div class="scroll-container">
+            <img src="thumbnail1.png" alt="Thumbnail 1" loading="lazy">
+            <img src="thumbnail2.png" alt="Thumbnail 2" loading="lazy">
+            <img src="thumbnail3.png" alt="Thumbnail 3" loading="lazy">
+            
+          </div>
         </div>
-      </div>
+      </section>
 
-      
-      <section class="media-scroller" aria-label="Media scroller">
-        <div class="scroll-container">
-          <img src="thumbnail1.png" alt="Thumbnail 1" loading="lazy">
-          <img src="thumbnail2.png" alt="Thumbnail 2" loading="lazy">
-          <img src="thumbnail3.png" alt="Thumbnail 3" loading="lazy">
-         
+      <section id="artwork" class="tab-section" role="region" aria-labelledby="tab-artwork">
+        <h2 id="tab-artwork">Artwork</h2>
+        <p class="description">Gallery, posters, thumbnails and digital art pieces go here.</p>
+        <div class="art-grid">
+          <img src="art1.jpg" alt="Artwork 1" loading="lazy">
+          <img src="art2.jpg" alt="Artwork 2" loading="lazy">
         </div>
+      </section>
+
+      <section id="contact" class="tab-section" role="region" aria-labelledby="tab-contact">
+        <h2 id="tab-contact">Contact</h2>
+        <p class="description">Links / contact form / social media info.</p>
+        <ul>
+          <li><a href="mailto:you@example.com">you@example.com</a></li>
+          <li><a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">Instagram</a></li>
+        </ul>
       </section>
     </main>
   </div>
 
   <script>
-    
+    // The Tab controller that controlls secton visibility
     document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('img').forEach(function (img) {
-        var src = img.getAttribute('src');
-        if (!src || src.trim() === '') {
-          img.remove();
+      const links = document.querySelectorAll('nav a[data-target]');
+      const sections = document.querySelectorAll('.tab-section');
+
+      function showSection(id, pushState = true) {
+        sections.forEach(sec => {
+          const isActive = sec.id === id;
+          sec.classList.toggle('active', isActive);
+          sec.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        links.forEach(link => {
+          link.classList.toggle('active', link.dataset.target === id);
+        });
+
+        if (pushState) {
+          // This updates the URL hash without scrolling 
+          history.replaceState(null, '', '#' + id);
         }
+      }
+
+      // Wire up click + keyboard behavior
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          showSection(link.dataset.target);
+        });
+        link.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            link.click();
+          }
+        });
       });
 
-      
-      document.querySelectorAll('a[href="#"]').forEach(function (a) {
-        a.addEventListener('click', function (e) { e.preventDefault(); });
-      });
+      // Initial view: use hash if present, else default to 'home'
+      const initial = (location.hash && location.hash.slice(1)) || 'home';
+      const validIds = Array.from(sections).map(s => s.id);
+      showSection(validIds.includes(initial) ? initial : 'home', false);
     });
   </script>
 </body>
