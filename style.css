@@ -8,8 +8,8 @@
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #000;
-  color: #00c9fc;
+  background-color:#000;
+  color:#00c9fc;
   min-height: 100vh;
   line-height: 1.5;
 }
@@ -89,7 +89,7 @@ main {
   max-width: 40rem;
   margin-left: 10%;
   z-index: 1;
-  color: #ee07ee;
+  
 }
 
 
